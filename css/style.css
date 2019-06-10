@@ -1,0 +1,123 @@
+body{
+	background-color: #ddd;
+	margin: 0px;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+canvas{
+	background-color: #fff;
+	border: 2px #000 solid;
+}
+.key-container{
+	height: 53px;
+}
+.key{
+    border-radius: 10px;
+	width: 50px;
+	height: 50px;
+	font-size: 40px;
+	text-align: center;
+}
+.key:hover {
+		cursor: pointer;
+}
+.key:active {
+	background-color: #888;
+	border: 0px;
+}
+
+#key-delete{
+	border-bottom: 3px #a33e4b solid;
+	border-left: 4px #a33e4b solid;
+	background-color: #c46d79;
+	color: #eab6be;
+}
+
+#key-delete:active{
+	background-color: #bf5260;
+	border: 0px;
+}
+
+
+#key-send{
+	background-color: #83bf57;
+	border-bottom: 3px #3e7a12 solid;
+	border-left: 4px #3e7a12 solid;
+	color: #caefae;
+}
+
+#key-send:active {
+	background-color: #4d9319;
+	border: 0px;
+}
+
+
+#menu-lateral{
+	width: 70px;
+	height: 100%;
+	float: left;
+	margin-left: 10px;
+}
+
+
+#menu-top{
+	width: 100%;
+	height: 50px;
+	font-size: 30px;
+	background-color: #ccc;
+	margin-bottom: 20px;
+	text-align: center;
+	padding: 10px;
+}
+
+#current-latter{
+	font-weight: bold;
+}
+
+
+.btn{
+	width: 50px;
+	height: 50px;
+	background-color: #fff;
+	border-radius: 10px;
+	float: left;
+	margin-left: 10px;	
+	border: 1px solid #fff;
+	background-size: 70%;
+	background-repeat: no-repeat;
+	background-position: center;
+	font-size: 40px;
+	text-align: center;
+	
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+.btn:hover{
+	cursor: pointer;
+	border: 1px solid #aaa;
+}
+
+.bt-active{
+	-webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+   filter: grayscale(0%);
+}
+
+#btn-pen{
+	background-image: url("../imgs/pen.jpg");
+}
+
+#btn-eraser{
+	background-image: url("../imgs/eraser.png");
+	
+}
+
+
+.disable-select {
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+}
