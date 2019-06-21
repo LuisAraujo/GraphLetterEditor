@@ -8,17 +8,71 @@ btnpen = document.getElementById("btn-pen");
 btneraser = document.getElementById("btn-eraser");
 keydelete = document.getElementById("key-delete");
 keysave = document.getElementById("key-send");
+keygerate = document.getElementById("key-gerate");
+keyturn = document.getElementById("btn-turn");
 currentlatter = document.getElementById("current-latter");
+veditor = document.getElementById("vieweditor");
+vproject = document.getElementById("viewproject");
+
 arrlatter = ['A','E','I','O','U'];
 indexlatter = 0;
-
+vieweditor = 1;
+vieweproject = 0;
 
 size = 15;
 arr_rgb = [];
-clearArrRGB();
+
+arr_rgb =  [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
+
+
+arr_rgb =  [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
+
+//clearArrRGB();
+
 mousepress = false;
 print = true;
 eraser = false;
+
+
+drawPixel();
 drawGrid();
 
 function clearArrRGB (){	
@@ -115,9 +169,30 @@ currentlatter.addEventListener('click', function(evt) {
 	indexlatter++;
 	indexlatter = indexlatter % (arrlatter.length) ;
 	currentlatter.innerHTML = arrlatter[indexlatter];
-	console.log(arrlatter.length-1);
 });
 
+
+keyturn.addEventListener('click', function(evt) {
+	if(vieweditor == 1){
+		vieweditor = 0;
+		veditor.style = "display: none"; 
+		vproject.style = "display: block";
+		
+		container = "";
+		for(i = 0; i < 20; i++)
+			container += "<div class='itemsaved'><img src='graphs/graph01.png'><div class='label'>E</div></div>";
+	
+		vproject.innerHTML = container;	
+		
+	}else{
+		vieweditor = 1;
+		vproject.style = "display: none"; 
+		veditor.style = "display: block"; 
+		
+		
+	}
+});
+	
 keydelete.addEventListener('click', function(evt) {
 	print = false;
 	eraser = false;
@@ -129,7 +204,7 @@ keydelete.addEventListener('click', function(evt) {
 	drawGrid();
 });
 
-keysave.addEventListener('click', function(evt) {
+keygerate.addEventListener('click', function(evt) {
 	print = false;
 	eraser = false;
 	btnpen.classList.remove("bt-active");
@@ -142,6 +217,97 @@ keysave.addEventListener('click', function(evt) {
 	//console.log(pixelToString(arr_rgb));
 });
 
+keysave.addEventListener('click', function(evt) {
+	ordeningNodes();
+	gerateAdjacentMatrix();
+	resertColorImage();
+	drawPixel();
+	drawGrid();
+});
+
+
+
+function ordeningNodes(){
+	//orderning nodes
+	graph.getNodes().sort(function(a, b) {
+				if(a.getX() > b.getX()){
+					return 1
+				}else if (a.getX() < b.getX()){
+					return -1;
+				}else{
+					if(a.getX() > b.getX()){
+						return 1
+					}else if (a.getX() < b.getX()){
+					return -1;	
+					}
+				}
+	});
+}
+
+function gerateAdjacentMatrix(){
+	
+	//gerate adjacente matrix
+	var matrix = [];
+	var i, j;	
+	for(i = 0 ; i < graph.getNodes().length; i++){
+		aux = []
+		for(j = 0 ; j < graph.getNodes().length; j++){
+			aux.push(0);
+		}
+		
+		matrix[i] = aux;
+	}
+	
+	var nodes = graph.getNodes();
+	//para todo nó
+	for(i = 0 ; i < graph.getNodes().length; i++){
+		//para todos os links
+		var links = graph.getNodes()[i].getLinks();
+		
+		for(j=0; j < links.length; j++){
+			//para todos os nós
+			for(l = 0 ; l < nodes.length; l++){
+				
+				
+				if( (links[j].getNode() === nodes[l]) 
+					//|| 
+				   // (graph.getNodes()[l] == graph.getNodes()[i] ) 
+				   ){
+					matrix[i][l] = 1;
+					matrix[l][i] = 1;
+					console.log("achou");
+					continue;
+				}
+					
+					//matrix[j][l] = 1;
+			}
+		}
+	}
+	
+	
+	maxsize = 20;
+	//completing matriz to patter 20x20
+	if(matrix.length < maxsize){
+		currentsize = matrix.length;
+		
+		for(i = 0; i < currentsize; i++){
+			for(j = currentsize; j < maxsize; j++){
+				matrix[i].push(0);
+			}
+		}
+		
+		for(i = currentsize; i < maxsize; i++){
+			matrix[i] = [];
+			for(j = 0;  j < maxsize; j++){
+				matrix[i].push(0);
+			}
+		}
+	}
+	
+	setNewItem(['A', graph, matrix]);
+	//console.log(getItem(0));
+}
+
 
 function pintOreasePixel(evt){
 	
@@ -152,7 +318,6 @@ function pintOreasePixel(evt){
 	if((posx >= 20 ) || (posy >= 20) )
 		return;
 	
-	//console.log(posx, posy);
 	if((mousepress) && (print) )
 		arr_rgb[posy][posx] = 1;
 	
@@ -176,41 +341,111 @@ function pixelToString(arr){
 	return arrstr;
 }
 
+function resertColorImage(){
+	var i =0;
+	var j = 0;
+	for(i=1; i< arr_rgb.length-1; i++){
+		for(j=1; j< arr_rgb[i].length-1; j++){	
+				if( (arr_rgb[i][j]  != 0) )
+					arr_rgb[i][j]  = 1;
+		}
+	}
+	
+	
+}
 
 function gerateGraph(arr){
 	//The vertices of the graph were defined as a subset of foreground pixel  which  fulfill  either  conditions:  (a)  end  points (),  aforeground pixel which has exactly only one neighbor; or (b) branch point (), a foreground pixel which has more than two neighbors
 	graph.reset();
 	
+	resertColorImage();
+	
 	for(i=1; i< arr_rgb.length-1; i++){
 		for(j=1; j< arr_rgb[i].length-1; j++){	
-				if( (arr_rgb[i][j] > 1) || (arr_rgb[i][j] < 0) )
-					arr_rgb[i][j]  = 1;
-			 
+				
+				
+				//breanch
+				/*|0,0,0|    |0,0,0|
+				  |0,1,1| ou |1,1,0|*/
 			   if ( ( (arr_rgb[i][j] == 1) && (arr_rgb[i+1][j] == 1) && (arr_rgb[i-1][j] == 1) ) 
 				   && ( (arr_rgb[i][j+1] == 1) || (arr_rgb[i][j-1] == 1) ) ){	
 					arr_rgb[i][j] = 2;	
 					n = new Node(i, j);
 					graph.addNode(n);
 				   }
-					
+				
+				//breanch
 				if ( ( (arr_rgb[i][j] == 1) && (arr_rgb[i][j+1] == 1) && (arr_rgb[i][j-1] == 1) ) 
 				   && ( (arr_rgb[i+1][j] == 1) || (arr_rgb[i-1][j] == 1) ) ){
 					arr_rgb[i][j] = 2;		
 					n = new Node(i, j);
 					graph.addNode(n);
+				 }
+				   
+				   
+				//quebra diagonal
+				if ( (arr_rgb[i][j] == 1) && (arr_rgb[i-1][j] == 0) && (arr_rgb[i-1][j+1] == 0) 
+					 && (arr_rgb[i-1][j-1] == 0) &&  (arr_rgb[i][j+1] == 0)  && (arr_rgb[i][j-1] == 0) ) 
+				   {	
+					arr_rgb[i][j] = 2;	
+					n = new Node(i, j);
+					graph.addNode(n);
 				   }
+				   
+				//quebra diagonal   
+				if ( (arr_rgb[i][j] == 1) && (arr_rgb[i+1][j] == 0) && (arr_rgb[i+1][j+1] == 0) 
+					 && (arr_rgb[i+1][j-1] == 0) &&  (arr_rgb[i][j+1] == 0)  && (arr_rgb[i][j-1] == 0) ) 
+				   {	
+					arr_rgb[i][j] = 2;	
+					n = new Node(i, j);
+					graph.addNode(n);
+				   }
+				   
+				
+				   
+			   //esquina
+			   /* |0,0,0|    |0,0,0|
+				  |0,1,1| ou |1,1,0|*/
+			   if ((arr_rgb[i][j] == 1) && (arr_rgb[i-1][j] == 0)  &&  (arr_rgb[i-1][j-1] == 0)
+				   &&  (arr_rgb[i-1][j+1] == 0) && 
+			   (((arr_rgb[i][j+1] == 1)  && (arr_rgb[i][j-1] == 0))
+			   || 
+			   ((arr_rgb[i][j+1] == 0)  && (arr_rgb[i][j-1] == 1)))
+			   )
+			   {	
+					arr_rgb[i][j] = 2;	
+					n = new Node(i, j);
+					graph.addNode(n);
+			   }
+			
+			     //esquina
+			   /* |0,1,1|    |1,1,0|
+				  |0,0,0| ou |0,0,0|*/
+			   if ((arr_rgb[i][j] == 1) && (arr_rgb[i+1][j] == 0)  &&  (arr_rgb[i+1][j-1] == 0)
+				   &&  (arr_rgb[i+1][j+1] == 0) && 
+			   (((arr_rgb[i][j+1] == 1)  && (arr_rgb[i][j-1] == 0))
+			   || 
+			   ((arr_rgb[i][j+1] == 0)  && (arr_rgb[i][j-1] == 1)))
+			   )
+			   {	
+					arr_rgb[i][j] = 2;	
+					n = new Node(i, j);
+					graph.addNode(n);
+			   }
+			   
+			   
+				   
+				
 			   
 		  }
 		}
 	
-	 
+	//return;
 	
 	
-	for(i=0; i< arr_rgb.length; i++){
+	/*for(i=0; i< arr_rgb.length; i++){
 		for(j=0; j< arr_rgb[i].length; j++){	 
-			
 			if(arr_rgb[i][j] == 1){
-				
 				countheighbor = 0;
 				
 				if(i < arr_rgb.length-1){
@@ -271,6 +506,9 @@ function gerateGraph(arr){
 					}
 				}
 				
+				if((x == 4) && (y == 13)){
+					console.log(countheighbor);
+				}
 				if((countheighbor == 1) || (countheighbor > 2)){
 					
 					n = new Node(i,j);
@@ -281,62 +519,103 @@ function gerateGraph(arr){
 			}
 		}
 	}
+	*/
 	
-	//gerateEdges();
+	gerateEdges();
 	
 }
 
 
-
 function gerateEdges(){
-	var j;
-	
-	for(j=0; j <  graph.getNodes().length; j++){
+	var j=0;
+	//graph.getNodes()[i].length
+	for(j=0; j < graph.getNodes().length; j++){
+		console.log("proximo node");
 		node = graph.getNodes()[j];
 		var x = node.getX();
 		var y = node.getY();
-		a = 2000;
+			
+		while( 
+			(arr_rgb[x+1][y] >= 1 ) || (arr_rgb[x-1][y] >= 1) ||
+			(arr_rgb[x][y+1] >= 1) || (arr_rgb[x][y-1] >= 1) || 
+			(arr_rgb[x+1][y-1] >= 1) || (arr_rgb[x-1][y+1] >= 1) || 
+			(arr_rgb[x-1][y-1] >= 1) || (arr_rgb[x+1][y+1] >= 1) 
+		){
+			
+		//for(i=0; i < 1; i++){
+			node = graph.getNodes()[j];
+			x = node.getX();
+			y = node.getY();
 		
-		while(a--){
-			
-			if(arr_rgb[x+1][y] > 0){
-				x++;
-			}else if(arr_rgb[x+1][y+1] > 0){
-				x++;
-				y++;
-			}else if(arr_rgb[x][y+1] > 0){
-				y++;
-			}else if(arr_rgb[x-1][y] > 0){
-				x--;
-			}else if(arr_rgb[x][y-1] > 0){
-				y--;
-			}else if(arr_rgb[x-1][y-1] > 0){
-				x--;
-				y--;
-			}else if(arr_rgb[x+1][y-1] > 0){
-				x++;
-				y--;
-			}else if(arr_rgb[x-1][y+1] > 0){
-				x--;
-				y++;
-			}
-			
-			if(arr_rgb[x][y] != 2){
-				arr_rgb[x][y] = -1;
-			}else if ( (x != node.getX() )  || (y != node.getY()) ){
-				nodes = graph.getNodes();
-				var i;
-				for(i=0; i< nodes.length; i++){
-					if((nodes[i].getX() == x) && (nodes[i].getY() == y)){
-						node.addLink(new Link(nodes[i]));
-						break;
-					}
+			while(1){
+				console.log(x, y);
+				iny = y;
+				inx = x;
+				
+				//registar a direção se subindo ou descendo, esquerda e direita
+				//para não ocorrer de criar um link com o vértice anterior, que ele saiu
+				//verificar se os próximos a frente são 2
+				//se for, crio link
+				
+				
+				if(arr_rgb[x+1][y] > 0){
+					x++;
+				}else if(arr_rgb[x+1][y+1] > 0){
+					x++;
+					y++;
+				}else if(arr_rgb[x][y+1] > 0){
+					y++;	
+				}else if(arr_rgb[x-1][y] > 0){
+					x--;	
+				}else if(arr_rgb[x][y-1] > 0){
+					y--;
+				}else if(arr_rgb[x-1][y-1] > 0){
+					x--;
+					y--;	
+				}else if(arr_rgb[x+1][y-1] > 0){
+					x++;
+					y--;	
+				}else if(arr_rgb[x-1][y+1] > 0){
+					x--;
+					y++;						
 				}
 				
-				break;
-			
-			}
-			
-		}	
+				
+				if((iny == y) && (inx == x)){
+					console.log("stoping");					
+					break;
+				}
+				
+				if(arr_rgb[x][y] != 2){
+					
+					arr_rgb[x][y] = -1;
+					
+				}else if ( (x != node.getX() )  || (y != node.getY()) ){
+					node.addLink(new Link(getNodeByXandY(x,y)));
+					console.log("find node");
+					node = graph.getNodes()[j];
+					x = node.getX();
+					y = node.getY();
+					break;
+				}
+				
+				
+				
+				
+				
+			}	
+		}
 	}
+}
+
+
+function getNodeByXandY(x, y){
+	nodes = graph.getNodes();
+	for(i=0; i< nodes.length; i++){
+		if((nodes[i].getX() == x) && (nodes[i].getY() == y)){
+			 return nodes[i];
+		}
+	}
+	
+	return null;
 }

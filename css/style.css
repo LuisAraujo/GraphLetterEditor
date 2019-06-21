@@ -10,9 +10,15 @@ canvas{
 	background-color: #fff;
 	border: 2px #000 solid;
 }
-.key-container{
-	height: 53px;
+.container-canvas{
+	float:left;
+	margin-left: 10px;
 }
+.key-container{
+	height: 70px;
+}
+
+
 .key{
     border-radius: 10px;
 	width: 50px;
@@ -52,6 +58,21 @@ canvas{
 	background-color: #4d9319;
 	border: 0px;
 }
+
+
+
+#key-gerate{
+	background-color: #63a1f2;
+	border-bottom: 3px #5288ce solid;
+	border-left: 4px #5288ce solid;
+	color: #9ec1ed;
+}
+
+#key-gerate:active {
+	background-color: #6195d8;
+	border: 0px;
+}
+
 
 
 #menu-lateral{
@@ -110,14 +131,35 @@ canvas{
 }
 
 #btn-eraser{
-	background-image: url("../imgs/eraser.png");
-	
+	background-image: url("../imgs/eraser.png");	
 }
 
+#btn-turn{
+	background-image: url("../imgs/check.png");
+}
 
 .disable-select {
   -webkit-user-select: none;  
   -moz-user-select: none;    
   -ms-user-select: none;      
   user-select: none;
+}
+
+
+.itemsaved{
+	float:left;
+	margin-left: 10px;
+	width: 100px;
+}
+
+.itemsaved img{
+	width: 100px;
+	height: 100px;
+}
+
+.itemsaved .label{
+	background-color: #aaa;
+	width: 100px;
+	height: 20px;
+	text-align: center;
 }

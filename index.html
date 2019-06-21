@@ -4,39 +4,60 @@
 
 </head>
 <body class="disable-select">
+
 <div id="menu-top">
-<div class="btn bt-active" id="current-latter"> A </div>
-<div class="btn bt-active" id="btn-pen"></div>
-<div class="btn " id="btn-eraser"></div>
+	<div class="btn bt-active" id="btn-turn"></div>
+	<div class="btn bt-active" id="current-latter"> A </div>
+	<div class="btn bt-active" id="btn-pen"></div>
+	<div class="btn " id="btn-eraser"></div>
 </div>
 
-<div id="menu-lateral">
+<div id="vieweditor">
+	<div id="menu-lateral">
+
+		<div class="key-container">
+			<div class="key" id="key-delete">
+				D
+			</div>
+			<span> Deletar </span>
+		</div>
+
+		<div class="key-container">
+			<div class="key" id="key-gerate" >
+				G
+			</div>
+			<span> Gerar </span>
+		</div>
+
+		<div class="key-container">
+			<div class="key" id="key-send" >
+				S
+			</div>
+			<span> Salvar </span>
+		</div>
+	</div>
 
 
-<div class="key-container">
-	<div class="key" id="key-delete">
-		D
+	<div id="container-canvas">
+		<div class="container-canvas">
+			<canvas id="canvas" width="300" height="300"></canvas>
+			<div>Binary Matrix</div>
+		</div>
+		<div class="container-canvas">
+			<canvas id="canvas2" width="300" height="300"></canvas>
+			<div>Graph Representation</div>
+		</div>
 	</div>
 </div>
-<span> Deletar </span>
-
-<div class="key-container">
-	<div class="key" id="key-send" >
-		S
-	</div>
-	<span> Salvar </span>
+<div id="viewproject" style="display:none">
+   <div class="itemsaved"> 
+	<img src="graphs/graph01.png">
+	<div class="label">A</div>
+   </div>
 </div>
 
-</div>
-
-<div id="container-canvas">
-<canvas id="canvas" width="300" height="300"></canvas>
-<canvas id="canvas2" width="300" height="300"></canvas>
-
-</div>
-  
-
-<body>
+</body>
 <script src="js/structured.js"> </script>
+<script src="js/localstorage.js"> </script>
 <script src="js/main.js"> </script>
 </html>
