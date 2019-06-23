@@ -12,7 +12,7 @@ This editor enable draw letters in canvas and generate graphs by this pixels.
 
 The data are stored in localstorage (browser) and input in a text file (dataset.txt). We save prints (as png) of letters and graphs in "dataset/images" folder
 
-![alt text](https://github.com/LuisAraujo/GraphLetterEditor/blob/master/printscreen02.png)
+![alt text](https://github.com/LuisAraujo/GraphLetterEditor/blob/master/printscreen2.png)
 
 ### Data
 
