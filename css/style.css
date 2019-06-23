@@ -163,3 +163,9 @@ canvas{
 	height: 20px;
 	text-align: center;
 }
+
+#viewproject{
+	background-color: #fff;
+	overflow-y: scroll;	
+	height: 500px;
+}

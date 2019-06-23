@@ -29,14 +29,18 @@ function saveItem(name, content){
 
 function getListItems(){
 	var a = [];
-	for( key in localStorage){
-		a.push(key);
+	for(i = 0; i < localStorage.length; i++){
+		a.push( localStorage.key(i)  );
 	}
 	return a;
 }
 
 function getItem(item){
 	return localStorage.getItem(item);
+}
+
+function getItemByKey(key){
+	return localStorage.key(key);
 }
 
 function getNameItem(id){
