@@ -197,8 +197,6 @@ function gerateGraph(arr){
 		  }
 		}
 	
-	
-	
 	gerateEdges();
 	
 }

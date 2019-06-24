@@ -62,7 +62,7 @@ keyturn.addEventListener('click', function(evt) {
 		
 		container = "";
 		var allgraphs = getListItems();
-		for(i = 0; i < allgraphs.length; i++){
+		for(i = allgraphs.length-1; i > 0 ; i--){
 			var latter = getItem("Graph"+i);
 			latter = latter[latter.length-1];
 			container += "<div class='itemsaved'><img src='dataset/images/Graph"+i+"-1-"+latter+".png'><div class='label'>Graph"+i+"("+latter+")</div></div>";

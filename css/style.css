@@ -167,5 +167,5 @@ canvas{
 #viewproject{
 	background-color: #fff;
 	overflow-y: scroll;	
-	height: 500px;
+	height: calc(100% - 20px);
 }
