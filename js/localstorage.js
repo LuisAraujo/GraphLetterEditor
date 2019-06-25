@@ -22,7 +22,9 @@ function setNewItem(content){
 	
 	return name;
 }
-
+function updateItem(name, content){
+	localStorage.setItem(name, content);	
+}
 function saveItem(name, content){
 	localStorage.setItem(name, content);	
 }

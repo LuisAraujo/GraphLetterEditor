@@ -4,7 +4,7 @@ graph = new Graph();
 //arry of possible latters
 arrlatter = ['A','a','E','e','I','i','O','o','U','u'];
 //current index for latter
-indexlatter = 3;
+indexlatter = 9;
 currentlatter.innerHTML = arrlatter[indexlatter];
 //flag to controling view editor mode
 vieweditor = 1;
@@ -22,6 +22,8 @@ timeout = 20;
 //draw on start 
 drawPixel();
 drawGrid();
+
+//clearArrRGB();	
 
 //ordening nodes by x and y
 function ordeningNodes(){
@@ -72,7 +74,7 @@ function gerateAdjacentMatrix(){
 				   ){
 					matrix[i][l] = 1;
 					matrix[l][i] = 1;
-					console.log("achou");
+					//console.log("achou");
 					continue;
 				}
 					
@@ -194,6 +196,21 @@ function gerateGraph(arr){
 					graph.addNode(n);
 			   }
 			   
+			   
+			      //triangulo
+			   /* |0,1,0|    |1,0,1|
+				  |1,0,1| ou |0,1,0|*/
+			   if ( ((arr_rgb[i][j] == 1) && (arr_rgb[i+1][j-1] == 1)  &&  (arr_rgb[i+1][j+1] == 1))
+					|| 
+			        ((arr_rgb[i][j] == 1) && (arr_rgb[i-1][j-1] == 1)  &&  (arr_rgb[i-1][j+1] == 1))
+				  )
+			   {	
+					arr_rgb[i][j] = 2;	
+					
+					n = new Node(i, j);
+					graph.addNode(n);
+			   }
+			   
 		  }
 		}
 	
@@ -282,7 +299,7 @@ function gerateEdges(){
 					
 				}else if ( (x != node.getX() )  || (y != node.getY()) ){
 					node.addLink(new Link(getNodeByXandY(x,y)));
-					//console.log("find node");
+					
 					node = graph.getNodes()[j];
 					x = node.getX();
 					y = node.getY();
@@ -374,7 +391,7 @@ function sendDataToFile(data) {
     data: data,
   },
   function(data, status){
-    console.log(status);
+    //console.log(status);
   });
    
 }
@@ -393,16 +410,346 @@ function sendDataToImg(canvas, namedata) {
 			name: namedata
 		}
 	}).done(function(o) {
-		console.log('saved'); 
+		//console.log('saved'); 
 	});
   
  
 }
 
+function saveAllDatasetByStorage() {
+	list = getListItems();
+    var data = "";
+	for(var j = 0; j < list.length; j++){
+		data  += getItem("Graph"+j) +"\n";
+	}
+		
+	 $.post("php/filemanager_dataset.php",
+	  {
+		data: data,
+		latter: "",
+		min: "",
+		training: "alldata"
+	  });
+}
 
-/*for(i = 63; i < 73; i++){
+
+function sendDatasetToFile() {
+ 
+  list = getListItems();
+  Amasc = "";
+  Amasc_t = "";
+  
+  Amin = "";
+  Amin_t = "";
+  
+  Emasc = "";
+  Emasc_t = "";
+  
+  Emin = "";
+  Emin_t = "";
+  
+  Imasc = "";
+  Imasc_t = "";
+  
+  Imin = "";
+  Imin_t = "";
+  
+  Omasc = "";
+  Omasc_t = "";
+  
+  Omin = "";
+  Omin_t = "";
+  
+  Umasc = "";
+  Umasc_t = "";
+  
+  Umin = "";
+  Umin_t = "";
+  
+  for(var j = 0; j < list.length; j++){
+	if(j <= 40){
+		var c = j;
+		
+		if( (c == 0) || (c == 1) || (c ==2) || (c == 5) || (c == 6) || (c == 8) || (c == 20) || (c == 25) || (c == 30)  || (c == 35) )	
+			Amasc_t += getItem("Graph"+j) +"\n";
+		else {
+			Amasc += getItem("Graph"+j) +"\n";
+		}
+	
+	}else if(j <= 80){
+		var c = j%40;
+		if( (c == 0) || (c == 1) || (c ==2) || (c == 5) || (c == 6) || (c == 8) || (c == 20) || (c == 25) || (c == 30)  || (c == 35) )
+			Amin_t += getItem("Graph"+j) +"\n";
+		else
+			Amin += getItem("Graph"+j)+"\n";
+			
+	
+	}else if(j <= 120){
+		var c = j%80;
+		if( (c == 0) || (c == 1) || (c ==2) || (c == 5) || (c == 6) || (c == 8) || (c == 20) || (c == 25) || (c == 30)  || (c == 35) )
+			Emasc_t += getItem("Graph"+j) +"\n";
+		else 
+			Emasc += getItem("Graph"+j) +"\n";
+	
+	}else if(j <= 160){
+		var c = j%120;
+		if( (c == 0) || (c == 1) || (c ==2) || (c == 5) || (c == 6) || (c == 8) || (c == 20) || (c == 25) || (c == 30)  || (c == 35) )
+			Emin_t += getItem("Graph"+j) +"\n";
+		else 
+			Emin += getItem("Graph"+j) +"\n";
+	
+	}else if(j <= 200){
+		var c = j%160;
+		if( (c == 0) || (c == 1) || (c ==2) || (c == 5) || (c == 6) || (c == 8) || (c == 20) || (c == 25) || (c == 30)  || (c == 35) )
+			Imasc_t += getItem("Graph"+j) +"\n";
+		else 
+			Imasc += getItem("Graph"+j) +"\n";
+	
+	}else if(j <= 240){
+		var c = j%200;
+		if( (c == 0) || (c == 1) || (c ==2) || (c == 5) || (c == 6) || (c == 8) || (c == 20) || (c == 25) || (c == 30)  || (c == 35) )
+			Imin_t += getItem("Graph"+j) +"\n";
+		else 
+			Imin += getItem("Graph"+j) +"\n";
+	
+	}else if(j <= 280){
+		var c = j%240;
+		if( (c == 0) || (c == 1) || (c ==2) || (c == 5) || (c == 6) || (c == 8) || (c == 20) || (c == 25) || (c == 30)  || (c == 35) )
+			Omasc_t += getItem("Graph"+j) +"\n";
+		else 
+			Omasc += getItem("Graph"+j) +"\n";
+	
+	}else if(j <= 320){
+		var c = j%280;
+		if( (c == 0) || (c == 1) || (c ==2) || (c == 5) || (c == 6) || (c == 8) || (c == 20) || (c == 25) || (c == 30)  || (c == 35) )
+			Omin_t += getItem("Graph"+j) +"\n";
+		else 
+			Omin += getItem("Graph"+j) +"\n";
+	
+	}else if(j <= 360){
+		var c = j%320;
+		if( (c == 0) || (c == 1) || (c ==2) || (c == 5) || (c == 6) || (c == 8) || (c == 20) || (c == 25) || (c == 30)  || (c == 35) )
+			Umasc_t += getItem("Graph"+j) +"\n";
+		else 
+			Umasc += getItem("Graph"+j) +"\n";
+	
+	}else if(j <= 400){
+		var c = j%360;
+		if( (c == 0) || (c == 1) || (c ==2) || (c == 5) || (c == 6) || (c == 8) || (c == 20) || (c == 25) || (c == 30)  || (c == 35) )
+			Umin_t += getItem("Graph"+j) +"\n";
+		else 
+			Umin += getItem("Graph"+j) +"\n";
+	}
+  }
+	  
+	  /*console.log(Amasc);
+	  console.log(Amin);
+	  console.log(Emasc);
+	  console.log(Emin);
+	  console.log(Imasc);
+	  console.log(Imin);
+	  console.log(Omasc);
+	  console.log(Omin);*/
+	  
+	  
+	  //A -----
+	  $.post("php/filemanager_dataset.php",
+	  {
+		data: Amasc,
+		latter: "A",
+		min: "masc",
+		training: "training"
+	  });
+	  
+	    $.post("php/filemanager_dataset.php",
+	  {
+		data: Amasc_t,
+		latter: "A",
+		min: "masc",
+		training: "test"
+	  });
+	  
+	  
+	  $.post("php/filemanager_dataset.php",
+	  {
+		data: Amin,
+		latter: "A",
+		min: "min",
+		training: "training"
+	  });
+	  
+	  $.post("php/filemanager_dataset.php",
+	  {
+		data: Amin_t,
+		latter: "A",
+		min: "min",
+		training: "test"
+	  });
+	  
+	  //E -----
+	  $.post("php/filemanager_dataset.php",
+	  {
+		data: Emasc,
+		latter: "E",
+		min: "masc",
+		training: "training"
+	  });
+	  
+	    $.post("php/filemanager_dataset.php",
+	  {
+		data: Emasc_t,
+		latter: "E",
+		min: "masc",
+		training: "test"
+	  });
+	  
+	  
+	  $.post("php/filemanager_dataset.php",
+	  {
+		data: Emin,
+		latter: "E",
+		min: "min",
+		training: "training"
+	  });
+	  
+	  $.post("php/filemanager_dataset.php",
+	  {
+		data: Emin_t,
+		latter: "E",
+		min: "min",
+		training: "test"
+	  });
+	  
+	  
+	  //I -----
+	  
+	   $.post("php/filemanager_dataset.php",
+	  {
+		data: Imasc,
+		latter: "I",
+		min: "masc",
+		training: "training"
+	  });
+	  
+	    $.post("php/filemanager_dataset.php",
+	  {
+		data: Imasc_t,
+		latter: "I",
+		min: "masc",
+		training: "test"
+	  });
+	  
+	  
+	  $.post("php/filemanager_dataset.php",
+	  {
+		data: Imin,
+		latter: "I",
+		min: "min",
+		training: "training"
+	  });
+	  
+	  $.post("php/filemanager_dataset.php",
+	  {
+		data: Imin_t,
+		latter: "I",
+		min: "min",
+		training: "test"
+	  });
+	  
+	  //O -----
+	  
+	     $.post("php/filemanager_dataset.php",
+	  {
+		data: Omasc,
+		latter: "O",
+		min: "masc",
+		training: "training"
+	  });
+	  
+	    $.post("php/filemanager_dataset.php",
+	  {
+		data: Omasc_t,
+		latter: "O",
+		min: "masc",
+		training: "test"
+	  });
+	  
+	  
+	  $.post("php/filemanager_dataset.php",
+	  {
+		data: Omin,
+		latter: "O",
+		min: "min",
+		training: "training"
+	  });
+	  
+	  $.post("php/filemanager_dataset.php",
+	  {
+		data: Omin_t,
+		latter: "O",
+		min: "min",
+		training: "test"
+	  });
+	  
+	  
+	  //U -----
+   
+	   $.post("php/filemanager_dataset.php",
+	  {
+		data: Umasc,
+		latter: "U",
+		min: "masc",
+		training: "training"
+	  });
+	  
+	    $.post("php/filemanager_dataset.php",
+	  {
+		data: Umasc_t,
+		latter: "U",
+		min: "masc",
+		training: "test"
+	  });
+	  
+	  
+	  $.post("php/filemanager_dataset.php",
+	  {
+		data: Umin,
+		latter: "U",
+		min: "min",
+		training: "training"
+	  });
+	  
+	  $.post("php/filemanager_dataset.php",
+	  {
+		data: Umin_t,
+		latter: "U",
+		min: "min",
+		training: "test"
+	  });
+   
+}
+
+
+
+/*
+function openGraph(graphid){
+	
+	var tobd = getItem(graphid);
+	tobd = tobd.split(";");
+	tobd = tobd[0].split(":");
+	tobd = tobd[1].split(",");
+	var c = 20;
+	console.log(tobd.length);
+	for(var i = 0; i < 20; i++){
+		for(var j = 0; j < 20; j++){
+			arr_rgb[i][j] = tobd[c++];
+		}
+	}
+}*/
+
+/*for(i = 321; i < 327; i++){
 	content = localStorage.getItem("Graph"+i);
-	content2 = content.slice(0, -1) + "a";
+	content2 = content.slice(0, -1) + "U";
 	console.log(content);
 	localStorage.setItem("Graph"+i, content2)
 }*/

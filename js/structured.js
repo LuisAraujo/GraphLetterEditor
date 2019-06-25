@@ -69,5 +69,10 @@ Node.prototype.getLinks = function(){
 }
 
 Node.prototype.addLink = function(link){
+
+	for(var i = 0; i < this.links.length; i++)
+		if(this.links[i] == link)
+			return;
+	
 	this.links.push(link);
 }

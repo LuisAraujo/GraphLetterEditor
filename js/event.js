@@ -8,6 +8,14 @@ currentlatter = document.getElementById("current-latter");
 veditor = document.getElementById("vieweditor");
 vproject = document.getElementById("viewproject");
 
+/*itemsaved = document.getElementsByClassName("itemsaved");
+for(var i = 0; i < itemsaved.length; i++) {
+  itemsaved[i].addEventListener("click", function() {
+     alert("Clicked index: " + i);
+  })
+}*/	
+
+
 function getMousePos(canvas, evt) {
 	var rect = canvas.getBoundingClientRect();
 	return {
@@ -64,13 +72,25 @@ keyturn.addEventListener('click', function(evt) {
 		var allgraphs = getListItems();
 		for(i = allgraphs.length-1; i > 0 ; i--){
 			var latter = getItem("Graph"+i);
+			if(latter == null)
+				continue;
+			
 			latter = latter[latter.length-1];
-			container += "<div class='itemsaved'><img src='dataset/images/Graph"+i+"-1-"+latter+".png'><div class='label'>Graph"+i+"("+latter+")</div></div>";
-			container += "<div class='itemsaved'><img src='dataset/images/Graph"+i+"-2-"+latter+".png'><div class='label'>Graph"+i+"("+latter+")</div></div>";
+			container += "<div class='itemsaved' ><img graph = 'Graph"+i+"' src='dataset/images/Graph"+i+"-1-"+latter+".png'><div class='label'>Graph"+i+"("+latter+")</div></div>";
+			container += "<div class='itemsaved' ><img graph = 'Graph"+i+"' src='dataset/images/Graph"+i+"-2-"+latter+".png'><div class='label'>Graph"+i+"("+latter+")</div></div>";
 		}
 		
 		vproject.innerHTML = container;	
-		
+
+		/*itemsaved = document.getElementsByClassName("itemsaved");
+		for(var i = 0; i < itemsaved.length; i++) {
+			itemsaved[i].addEventListener("click", function(evt) {
+					openGraph( evt.target.attributes[0].nodeValue) ;
+			})
+		}*/
+
+
+
 	}else{
 		vieweditor = 1;
 		vproject.style = "display: none"; 
