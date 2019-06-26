@@ -1,0 +1,6 @@
+RedSoft1 Camada oculta Linear Camada externa Softmax - 57
+RedSoft2 Camada oculta Sogmoide Camada externa Softmax - 73
+RedSoft3 Camada oculta Tangente Hiperbolica Camada externa Softmax - 57
+RedeTan1 Camada oculta Linear Camada externa Tangente Hiperbolica - 9
+RedeTan2 Camada oculta Sogmoide Camada externa Tangente Hiperbolica - 28
+RedeTan3 Camada oculta Tangente Hiperbolica Camada Tangente Hiperbolica - 16

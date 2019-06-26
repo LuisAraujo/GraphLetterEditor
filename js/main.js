@@ -131,6 +131,8 @@ function gerateGraph(arr){
 				   }
 				
 				//breanch
+				/*|0,1,0|    |1,1,1|
+				  |1,1,1| ou |0,1,0|*/
 				if ( ( (arr_rgb[i][j] == 1) && (arr_rgb[i][j+1] == 1) && (arr_rgb[i][j-1] == 1) ) 
 				   && ( (arr_rgb[i+1][j] == 1) || (arr_rgb[i-1][j] == 1) ) ){
 					arr_rgb[i][j] = 2;		
@@ -140,7 +142,9 @@ function gerateGraph(arr){
 				 }
 				   
 				   
-				//quebra diagonal
+				//ponto final
+				/*|0,0,0|    
+				  |0,1,0|*/
 				if ( (arr_rgb[i][j] == 1) && (arr_rgb[i-1][j] == 0) && (arr_rgb[i-1][j+1] == 0) 
 					 && (arr_rgb[i-1][j-1] == 0) &&  (arr_rgb[i][j+1] == 0)  && (arr_rgb[i][j-1] == 0) ) 
 				   {	
@@ -151,6 +155,8 @@ function gerateGraph(arr){
 				   }
 				   
 				//quebra diagonal   
+				/*|0,0,0|    
+				  |0,1,0|*/
 				if ( (arr_rgb[i][j] == 1) && (arr_rgb[i+1][j] == 0) && (arr_rgb[i+1][j+1] == 0) 
 					 && (arr_rgb[i+1][j-1] == 0) &&  (arr_rgb[i][j+1] == 0)  && (arr_rgb[i][j-1] == 0) ) 
 				   {	
