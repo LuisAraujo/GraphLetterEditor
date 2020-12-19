@@ -18,9 +18,9 @@ The data are stored in localstorage (browser) and input in a text file (dataset.
 
 The data have the follow pattern: "x:x1,x2,x3,x4 ... x10,y1,y2,y3,y4 ... y1-0,z0-0,z0-1,z0-2 .. z10-10;y:Label"
 
-- xn is the position x of egde n
-- yn is the position y of egde n
-- znn is data of adjacent matix
-- Label is a lable of letter (A,a,E,e,I,i,O,o,U,u).
+- xn is the position x of edge n
+- yn is the position y of edge n
+- znn is data of adjacent matrix
+- Label is a label of letter (A,a,E,e,I,i,O,o,U,u).
 
 ![alt text](https://github.com/LuisAraujo/GraphLetterEditor/blob/master/printscreen03.png)
